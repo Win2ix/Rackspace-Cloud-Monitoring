@@ -1,8 +1,11 @@
 RackSpace Cloud Monitoring Create script prepared by Win2ix
 
+Sujith Jose <sjose@win2ix.ca>
+Win2ix Systems Inc. http://www.win2ix.ca
+
 This script will help us in   
 
-Monitoring of multiple number of servers.
+Monitoring multiple number of servers.
 Adding Multiple email address.
 Creating checks for HTTP check , Ping or Imap .
 
