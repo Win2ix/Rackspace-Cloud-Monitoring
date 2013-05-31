@@ -31,58 +31,86 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>RackSpace Cloud Monitoring Create script prepared by Win2ix</p>
+        <p><strong>RackSpace Cloud Monitoring Create script prepared by Win2ix</strong></p>
 
-<p>This script will help us in   </p>
+<p>Sujith Jose <a href="mailto:sjose@win2ix.ca">sjose@win2ix.ca</a>
+Win2ix Systems Inc. <a href="http://www.win2ix.ca">http://www.win2ix.ca</a></p>
 
-<p>Monitoring multiple number of servers.
-Adding Multiple email address.
-Creating checks for HTTP check , Ping or Imap .</p>
+<p>This script will help us to:</p>
 
-<p>Prerequisites</p>
+<ul>
+<li>Monitoring multiple number of servers.</li>
+<li>Adding Multiple email address.</li>
+<li>Creating checks for HTTP check, Ping or Imap.</li>
+</ul><p><strong>Prerequisites</strong></p>
 
-<p>Should have rackspace account ( username and api key).You will be able to get the API key by logging into the rackspace portal <a href="https://mycloud.rackspace.com/">https://mycloud.rackspace.com/</a> ( Using your username and  passowrd. )<br>
-Unix/linux machine (desktop/server) with access to the internet.</p>
+<ol>
+<li>
+<p>Should have rackspace account ( username and api key).</p>
 
+<p>You will be able to get the API key by logging into the rackspace portal <a href="https://mycloud.rackspace.com">https://mycloud.rackspace.com</a> (using your username and  password) from a Unix/linux machine (desktop/server) with access to the internet.</p>
+</li>
+<li>
 <p>Installation of RaxmonCLI a Command line Interface (CLI) tool</p>
 
-<p>Raxmon requires Python 2.5,2.6 or 2.7. This CLI tool is available in github as open source :  <a href="https://github.com/racker/rackspace-monitoring-cli">https://github.com/racker/rackspace-monitoring-cli</a>
-Install the rackspace-monitoring-cli using the pip tool.</p>
-
-<p>Configuring the RaxmonCLI</p>
+<p>Raxmon requires Python 2.5,2.6 or 2.7. This CLI tool is available in github as open source:  <a href="https://github.com/racker/rackspace-monitoring-cli">https://github.com/racker/rackspace-monitoring-cli</a></p>
+</li>
+<li><p>Install the rackspace-monitoring-cli using the pip tool.</p></li>
+</ol><p><strong>Configuring the RaxmonCLI</strong></p>
 
 <p>Under your home directory from where you would like to run the raxmon tool create a .raxrc file. Enter the following in the file</p>
 
-<p>[credentials]
-username=&lt;&gt; 
-api_key=&lt;&gt;
+<pre><code>[credentials]
+username=&lt;&lt;YOUR USERNAME&gt;&gt; 
+api_key=&lt;&lt;YOUR API KEY&gt;&gt;
 [api]
-url=<a href="https://monitoring.api.rackspacecloud.com/v1.0">https://monitoring.api.rackspacecloud.com/v1.0</a>
+url=https://monitoring.api.rackspacecloud.com/v1.0
 [auth_api]
-url=<a href="https://identity.api.rackspacecloud.com/v2.0">https://identity.api.rackspacecloud.com/v2.0</a>
+url=https://identity.api.rackspacecloud.com/v2.0
 [ssl]
-verify=true </p>
+verify=true 
+</code></pre>
 
-<p>For the complete installation steps you will find the document in <a href="http://www.rackspace.com/knowledge_center/article/getting-started-with-remote-monitoring">http://www.rackspace.com/knowledge_center/article/getting-started-with-remote-monitoring</a></p>
+<p>For the complete installation steps, please refer to <a href="http://www.rackspace.com/knowledge_center/article/getting-started-with-remote-monitoring">http://www.rackspace.com/knowledge_center/article/getting-started-with-remote-monitoring</a></p>
 
-<p>Once the RaxmonCLI have been configured test the same by using raxmon-entities-list.</p>
+<p>Once the RaxmonCLI have been configured, make sure it is working by running <code>raxmon-entities-list</code>.</p>
 
 <p>Copy over the script raxmon-monitoring-create.sh to the same home directory and give the script executable privileges.</p>
 
-<p>Running the Script</p>
+<p><strong>Running the Script</strong></p>
 
-<p>Once you run the script , it will display the list of servers which is presently being monitored. If the server for which you would like to configure the new check is already then use the id for the same or else create a new server to be monitored.
-Now it will list out the list of email address for which you would like to configure the alerts. If all the email address exist then use them , if not create a new plan with all the email address.
-Then it will ask the type of check you want to configure you can select 1 for HTTP, 2 for PING and 3 for IMAP.
-Answer all the set of questions and your script would be created.
-By default this script makes use of 3 different monitoring zones (mzlon,mzdfw,mzord) however you will be easily able to change this. </p>
+<p>Once you run the script, it will display the list of servers which is presently being monitored.  If you wish to add a check for a new server, either create a new server or use an existing, un-monitored server and use that server's id to configure the new check.</p>
 
-<p>Note: This script would be helpful when creating multiple checks for multiple servers.
-To make modification to the checks or to add 1-2 servers or checks you can always login to the GUI : <a href="https://ui-labs.cloudmonitoring.rackspace.com/">https://ui-labs.cloudmonitoring.rackspace.com/</a></p>
+<p>Now it will list out the list of email address for which you would like to configure the alerts. If all the email addresses exist then use them.  If not, create a new plan with all the email addresses.</p>
 
-<p>Please contact Win2ix Systems if you have any issues or for any modifications.<br>
-Sujith Jose <a href="mailto:sjose@win2ix.ca">sjose@win2ix.ca</a>
-Win2ix Systems Inc. <a href="http://www.win2ix.ca">http://www.win2ix.ca</a></p>
+<p>The script will then ask for the type of check you want to configure.  You can select: </p>
+
+<ul>
+<li>
+<code>1</code> for HTTP</li>
+<li>
+<code>2</code> for PING</li>
+<li>
+<code>3</code> for IMAP</li>
+</ul><p>Answer this set of questions and your script will be created.</p>
+
+<p><strong>Notes</strong></p>
+
+<ol>
+<li>By default, this script makes use of 3 different monitoring zones</li>
+</ol><pre><code>  * mzlon
+  * mzdfw
+  * mzord 
+
+However, you can change this easily. (ed.: how?) 
+</code></pre>
+
+<ol>
+<li>This script is helpful for creating multiple checks for multiple servers.  To make modification to the checks, to add more servers, or to add more checks, you can always login to the GUI: <a href="https://ui-labs.cloudmonitoring.rackspace.com">https://ui-labs.cloudmonitoring.rackspace.com</a>
+</li>
+</ol><p><strong>Contact</strong></p>
+
+<p>Please contact Win2ix Systems (<a href="http://www.win2ix.ca">http://www.win2ix.ca</a>) if you have any issues or for any modifications.</p>
       </section>
     </div>
 
